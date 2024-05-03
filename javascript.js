@@ -21,9 +21,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }))
 
     operators.forEach((op) => op.addEventListener('click', function (e) {
-        operate(e.target.textContent);
-        previousScreen.textContent = previousValue + " " + operator;
-        currentScreen.textContent = currentValue;
+        if (previousValue === '' && currentValue !== '') {
+            operate(e.target.textContent);
+            previousScreen.textContent = previousValue + " " + operator;
+            currentScreen.textContent = currentValue;
+        } else {
+            calculate();
+            previousScreen.textContent = currentValue + ' ' + operator;
+            currentValue = ''
+            currentScreen.textContent = '';
+        }
     }))
 
     clear.addEventListener('click', function () {
@@ -34,9 +41,15 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
     equals.addEventListener('click', function () {
-        calculate();
-        previousScreen.textContent = '';
-        currentScreen.textContent = roundResult(previousValue);
+        if (previousValue === '' && currentValue === '') {
+            currentScreen.textContent = '';
+        } else {
+            calculate();
+            currentValue = previousValue;
+            previousValue = '';
+            previousScreen.textContent = '';
+            currentScreen.textContent = roundResult(currentValue);
+        }
     })
 
     decimal.addEventListener('click', function () {
