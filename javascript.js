@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             currentScreen.textContent = currentValue;
         } else {
             calculate();
+            operator = op.textContent;
             previousScreen.textContent = currentValue + ' ' + operator;
             currentValue = ''
             currentScreen.textContent = '';
