@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
             currentScreen.textContent = roundResult(currentValue);
         }
     })
-
+//This is just a test
     decimal.addEventListener('click', function () {
         currentValue += '.';
         currentScreen.textContent = currentValue;
